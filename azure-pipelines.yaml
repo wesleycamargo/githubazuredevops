@@ -15,11 +15,12 @@ steps:
     verbose: false
     customCommand: 'run build'
 
-- task: CopyFiles@2
-  displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+steps:
+- task: ArchiveFiles@2
+  displayName: 'Archive $(System.DefaultWorkingDirectory)/build'
   inputs:
-    SourceFolder: '$(System.DefaultWorkingDirectory)/build'
-    TargetFolder: '$(build.artifactstagingdirectory)'
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/build'
+    archiveFile: '$(build.artifactstagingdirectory)/reactapp.zip'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
