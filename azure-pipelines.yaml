@@ -15,7 +15,6 @@ steps:
     verbose: false
     customCommand: 'run build'
 
-steps:
 - task: ArchiveFiles@2
   displayName: 'Archive $(System.DefaultWorkingDirectory)/build'
   inputs:
