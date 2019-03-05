@@ -1,5 +1,4 @@
 pool:
-  vmImage: Hosted VS2017
   demands: npm
 
 steps:
