@@ -1,4 +1,5 @@
 pool:
+  vmImage: Hosted VS2017
   demands: npm
 
 steps:
@@ -15,11 +16,11 @@ steps:
     verbose: false
     customCommand: 'run build'
 
-- task: ArchiveFiles@2
-  displayName: 'Archive $(System.DefaultWorkingDirectory)/build'
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
   inputs:
-    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/build'
-    archiveFile: '$(build.artifactstagingdirectory)/reactapp.zip'
+    SourceFolder: '$(System.DefaultWorkingDirectory)/build'
+    TargetFolder: '$(build.artifactstagingdirectory)'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
